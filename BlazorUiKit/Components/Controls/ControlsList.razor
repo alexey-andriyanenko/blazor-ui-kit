@@ -1,0 +1,21 @@
+﻿<table>
+    <thead>
+    <tr>
+        <th>Control</th>
+        <th>Control Name</th>
+        <th>Control Type Name</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var control in Controls)
+        {
+            <tr @key="control">
+                <td>
+                    <DynamicComponent Type="control.ComponentType" Parameters="control.ComponentParameters"></DynamicComponent>
+                </td>
+                <td>@control.Name</td>
+                <td>@control.TypeName</td>
+            </tr>
+        }
+    </tbody>
+</table>

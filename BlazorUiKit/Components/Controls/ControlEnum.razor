@@ -1,0 +1,6 @@
+﻿<InputSelect @bind-Value="SelectedValue">
+    @foreach (var option in SelectOptions)
+    {
+        <option value="@option.Value"> @option.Name </option>
+    }
+</InputSelect>
