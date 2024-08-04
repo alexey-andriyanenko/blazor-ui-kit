@@ -2,8 +2,8 @@
 
 public class ControlStringModel : IControl
 {
-    public string Name { get; set; } = string.Empty;
+    public required string Name { get; set; }
     public string TypeName { get; set; } = "string";
-    public Type ComponentType { get; set; } = typeof(ControlString);
-    public Dictionary<string, object> ComponentParameters { get; set; } = new();
+    public required Type ComponentType { get; set; }
+    public Dictionary<string, object>? ComponentParameters { get; set; }
 }

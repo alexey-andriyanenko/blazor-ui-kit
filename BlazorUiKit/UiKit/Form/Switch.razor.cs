@@ -5,35 +5,27 @@ namespace BlazorUiKit.UiKit.Form;
 
 public partial class Switch : ComponentBase
 {
-    [Parameter][EditorRequired]
-    public bool Checked { get; set; } = false;
-    
-    [Parameter][EditorRequired]
+    [Parameter]
+    [EditorRequired]
+    public bool Checked { get; set; }
+
+    [Parameter]
+    [EditorRequired]
     public EventCallback<bool> OnChange { get; set; }
 
-    private string CssClass { get; set; } = string.Empty;
+    [Parameter]
+    public bool Disabled { get; set; }
 
-    protected override void OnInitialized()
-    {
-        SetupCssClass();
-        base.OnInitialized();
-    }
-    
-    protected override void OnParametersSet()
-    {
-        SetupCssClass();
-        base.OnParametersSet();
-    }
+    private string CssClass =>
+        CssUtils.ConstructClassNames(
+            "switch",
+            ("checked", Checked),
+            ("disabled", Disabled)
+        );
 
     private Task HandleClick()
     {
         OnChange.InvokeAsync(!Checked);
         return Task.CompletedTask;
     }
-    
-    private void SetupCssClass()
-    {
-        CssClass = CssUtils.ConstructClassNames("switch", ("active", Checked));
-    }
 }
-

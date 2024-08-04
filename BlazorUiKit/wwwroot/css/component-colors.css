@@ -1,0 +1,40 @@
+﻿:root {
+    --button-primary-background-color: var(--brand-600);
+    --button-primary-border-color: var(--brand-600);
+    --button-primary-background-color-hover: var(--brand-700);
+    --button-primary-background-color-active: var(--brand-800);
+    --button-primary-text-color: var(--white);
+    
+    --button-secondary-background-color: var(--grey-0);
+    --button-secondary-border-color: var(--grey-200);
+    --button-secondary-background-color-hover: var(--grey-150);
+    --button-secondary-border-color-hover: var(--grey-250);
+    --button-secondary-background-color-active: var(--grey-200);
+    --button-secondary-border-color-active: var(--grey-250);
+    --button-secondary-text-color: var(--grey-750);
+    
+    --button-disabled-background-color: var(--grey-150);
+    --button-disabled-border-color: var(--grey-200);
+    --button-disabled-text-color: var(--grey-450);
+    
+    
+    --switch-bar-background-color: var(--grey-0);
+    --switch-bar-border-color: var(--grey-600);
+    --switch-circle-background-color: var(--grey-0);
+    --switch-circle-border-color: var(--grey-600);
+    
+    --switch-checked-bar-background-color: var(--brand-600);
+    --switch-checked-bar-border-color: var(--brand-600);
+    --switch-checked-circle-background-color: var(--white);
+    --switch-checked-circle-border-color: var(--white);
+    
+    --switch-disabled-background-color: var(--grey-150);
+    --switch-disabled-border-color: var(--grey-200);
+    --switch-disabled-circle-background-color: var(--grey-400);
+    --switch-disabled-circle-border-color: var(--grey-400);
+    
+    --switch-disabled-checked-bar-background-color: var(--grey-400);
+    --switch-disabled-checked-bar-border-color: var(--grey-400);
+    --switch-disabled-checked-circle-background-color: var(--grey-600);
+    --switch-disabled-checked-circle-border-color: var(--grey-600);
+}

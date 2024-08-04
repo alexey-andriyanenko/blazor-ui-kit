@@ -1,13 +1,17 @@
-﻿using BlazorUiKit.Components.Controls.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace BlazorUiKit.Components.Controls;
 
 public partial class ControlBoolean : ComponentBase
 {
-    [Parameter][EditorRequired]
-    public ControlBooleanModel Model { get; set; } = null!;
+    [Parameter]
+    public EventCallback<bool> OnChange { get; set; }
     
-    private bool Value { get; set; } = false;
-}
+    private bool Value { get; set; }
 
+    private void HandleChange()
+    {
+        Value = !Value;
+        OnChange.InvokeAsync(Value);
+    }
+}

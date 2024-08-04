@@ -6,7 +6,8 @@ namespace BlazorUiKit.Components.Controls;
 public partial class ControlNumber : ComponentBase
 {
     [Parameter][EditorRequired]
-    public ControlNumberModel Model { get; set; } = null!;
-
-    private int Value { get; set; } = default;
+    public int Value { get; set; }
+    
+    [Parameter][EditorRequired]
+    public EventCallback<int> OnChange { get; set; }
 }

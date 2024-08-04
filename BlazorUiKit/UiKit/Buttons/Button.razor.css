@@ -11,38 +11,40 @@
     cursor: pointer;
 }
 
-.btn-primary {
-    border: 1px solid var(--button-primary-border);
-    background-color: var(--button-primary-bg);
-    color: var(--button-primary-text);
+.primary {
+    border: 1px solid var(--button-primary-border-color);
+    background-color: var(--button-primary-background-color);
+    color: var(--button-primary-text-color);
 }
 
-.btn-primary:hover {
-    background-color: var(--button-primary-hover-bg);
+.primary:hover {
+    background-color: var(--button-primary-background-color-hover);
 }
 
-.btn-primary:active {
-    background-color: var(--button-primary-active-bg);
+.primary:active {
+    background-color: var(--button-primary-background-color-active);
 }
 
-.btn-secondary {
-    border: 1px solid var(--button-secondary-border);
-    background-color: var(--button-secondary-bg);
-    color: var(--button-secondary-text);
+.secondary {
+    border: 1px solid var(--button-secondary-border-color);
+    background-color: var(--button-secondary-background-color);
+    color: var(--button-secondary-text-color);
 }
 
-.btn-secondary:hover {
-    background-color: var(--button-secondary-hover-bg);
+.secondary:hover {
+    border-color: var(--button-secondary-border-color-hover);
+    background-color: var(--button-secondary-background-color-hover);
 }
 
-.btn-secondary:active {
-    background-color: var(--button-secondary-active-bg);
+.secondary:active {
+    border-color: var(--button-secondary-border-color-active);
+    background-color: var(--button-secondary-background-color-active);
 }
 
 
 .btn.disabled, .btn.disabled:hover, .btn.disabled:active, .btn.disabled:focus {
-    border: 1px solid var(--button-disabled-border);
-    background-color: var(--button-disabled-bg);
-    color: var(--button-disabled-text);
-    cursor: default;
+    border: 1px solid var(--button-disabled-border-color);
+    background-color: var(--button-disabled-background-color);
+    color: var(--button-disabled-text-color);
+    cursor: not-allowed;
 }

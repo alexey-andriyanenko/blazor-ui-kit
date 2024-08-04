@@ -4,7 +4,7 @@ body, #app {
     overflow: hidden;
 }
 
-#app > * {
+*, #app {
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }

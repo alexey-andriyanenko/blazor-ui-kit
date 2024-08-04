@@ -1,4 +1,7 @@
-﻿<InputSelect @bind-Value="SelectedValue">
+﻿@using System.Diagnostics.CodeAnalysis
+@typeparam TEnum where TEnum : Enum;
+
+<InputSelect @bind-Value="Value" @bind-Value:after="@(() => OnChange.InvokeAsync(Value))">
     @foreach (var option in SelectOptions)
     {
         <option value="@option.Value"> @option.Name </option>

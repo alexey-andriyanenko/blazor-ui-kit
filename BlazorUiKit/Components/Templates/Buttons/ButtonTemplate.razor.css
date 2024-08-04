@@ -1,1 +1,11 @@
-﻿
+﻿.template-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+::deep .btn {
+    max-width: 150px;
+}

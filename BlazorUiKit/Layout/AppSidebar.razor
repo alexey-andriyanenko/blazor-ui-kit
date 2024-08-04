@@ -1,11 +1,20 @@
-﻿<div class="app-sidebar">
+﻿@using BlazorUiKit.Utils
+<div class="app-sidebar">
     <div class="app-sidebar-header">
         <div class="title">
             Blazor UI Kit Docs
         </div>
     </div>
-    
+
     <div class="app-sidebar-body">
-        
+        <a class="@(CssUtils.ConstructClassNames("nav-link", ("selected", CheckIfPageIsCurrent(Routes.Home))))"
+           href="@Routes.Home">
+            Home
+        </a>
+
+        <a class="@(CssUtils.ConstructClassNames("nav-link", ("selected", CheckIfPageIsCurrent(Routes.ButtonDocs))))"
+           href="@Routes.ButtonDocs">
+            Button Docs
+        </a>
     </div>
 </div>

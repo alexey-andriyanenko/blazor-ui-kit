@@ -2,8 +2,8 @@
 
 public class ControlNumberModel : IControl
 {
-    public string Name { get; set; } = string.Empty;
+    public required string Name { get; set; }
     public string TypeName { get; set; } = "number";
-    public Type ComponentType { get; set; } = typeof(ControlNumber);
-    public Dictionary<string, object> ComponentParameters { get; set; } = new();
+    public required Type ComponentType { get; set; }
+    public Dictionary<string, object>? ComponentParameters { get; set; }
 }

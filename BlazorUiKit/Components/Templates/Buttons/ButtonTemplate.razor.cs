@@ -12,42 +12,80 @@ public partial class ButtonTemplate : ComponentBase
 
     protected override void OnInitialized()
     {
-        ButtonParameters.Add(nameof(Button.Disabled), false);
-        Controls.Add(new ControlBooleanModel
-        {
-            Name = nameof(Button.Disabled),
-        });
+        ConstructButtonParams();
+        ConstructControls();
         
-        
-        ButtonParameters.Add(nameof(Button.OnClick), EventCallback.Factory.Create(this, () => Console.WriteLine("Button clicked!")));
-        Controls.Add(new ControlReadOnlyModel
-        {
-           Name = nameof(Button.OnClick),
-           TypeName = nameof(EventCallback)
-        });
+        base.OnInitialized();
+    }
 
-        var variantControl = new ControlEnumModel
-        {
-            Name = nameof(Button.Variant),
-            TypeName = nameof(ButtonVariantsEnum),
-            Enum = typeof(ButtonVariantsEnum)
-        };
-        variantControl.ComponentParameters.Add(nameof(ControlEnum.Model), variantControl);
-        ButtonParameters.Add(nameof(Button.Variant), ButtonVariantsEnum.Primary);
-        Controls.Add(variantControl);
+    private void ConstructButtonParams()
+    {
+        var buttonParameters = new Dictionary<string, object>();
         
-        ButtonParameters.Add(nameof(Button.ChildContent), (RenderFragment)(builder =>
+        buttonParameters.Add(nameof(Button.Disabled), false);
+
+        buttonParameters.Add(nameof(Button.Variant), ButtonVariantsEnum.Primary);
+        
+        buttonParameters.Add(nameof(Button.ChildContent), (RenderFragment)(builder =>
         {
             builder.AddContent(0, "Click me!");
         }));
-        Controls.Add(new ControlReadOnlyModel
+        
+        ButtonParameters = buttonParameters;
+    }
+
+
+    private void ConstructControls()
+    {
+        var controlModels = new List<IControl>();
+        
+        controlModels.Add(new ControlBooleanModel
+        {
+            Name = nameof(Button.Disabled),
+            ComponentType = typeof(ControlBoolean),
+            ComponentParameters = new()
+            {
+                { nameof(ControlBoolean.OnChange), EventCallback.Factory.Create<bool>(this, HandleDisabledChange  )}
+            }
+        });
+
+        controlModels.Add(new ControlReadOnlyModel
+        {
+            Name = nameof(Button.OnClick),
+            ComponentType = typeof(ControlReadonly),
+            TypeName = nameof(EventCallback)
+        });
+        
+        controlModels.Add(new ControlEnumModel
+        {
+            Name = nameof(Button.Variant),
+            TypeName = nameof(ButtonVariantsEnum),
+            ComponentType = typeof(ControlEnum<ButtonVariantsEnum>),
+            ComponentParameters = new()
+            {
+                { nameof(ControlEnum<ButtonVariantsEnum>.EnumType), typeof(ButtonVariantsEnum) },
+                { nameof(ControlEnum<ButtonVariantsEnum>.OnChange), EventCallback.Factory.Create<ButtonVariantsEnum>(this,  HandleButtonVariantChange )}
+            }
+        });
+        
+        controlModels.Add(new ControlReadOnlyModel
         {
             Name = nameof(Button.ChildContent),
+            ComponentType = typeof(ControlReadonly),
             TypeName = nameof(RenderFragment)
         });
         
-        
-        base.OnInitialized();
+        Controls = controlModels;
+    }
+    
+    private void HandleButtonVariantChange(ButtonVariantsEnum variant)
+    {
+        ButtonParameters[nameof(Button.Variant)] = variant;
+    }
+    
+    private void HandleDisabledChange(bool disabled)
+    {
+        ButtonParameters[nameof(Button.Disabled)] = disabled;
     }
 }
 
